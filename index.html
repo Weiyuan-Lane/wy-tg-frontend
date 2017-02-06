@@ -26,17 +26,16 @@
 			<div class="col-lg-12">
 				<div class="panel panel-default">
 					<div class="panel-heading">
-						<div class="input-group">
-			        <input id="github_input" type="text" class="form-control" placeholder="Github Keyword">
-			        <span class="input-group-btn">
-			          <button id="github_button" type="button" class="btn btn-primary btn-flat">
-			            Search
-			          </button>
-			        </span>
-			      </div>
+						<h4>Github Search</h4>
 					</div>
 					<div class="panel-body">
-						<table id="github_results_table" data-toggle="table" data-pagination="true" data-card-view="true">
+						<table id="github_results_table">
+								<thead>
+									<tr>
+		                <th data-field="id">Id</th>
+		                <th data-field="name">Name</th>
+			            </tr>
+								</thead>
 						</table>
 					</div>
 				</div>
@@ -75,7 +74,7 @@
 		</div>
 	</div>
 	<script src="public/js/jquery-1.11.1.min.js"></script>
-	<script src="public/js/bootstrap-table.js"></script>
+	<script src="public/js/bootstrap-table.min.js"></script>
 	<script src="public/js/bootstrap.min.js"></script>
 	<script src="app.js"></script>
 </body>

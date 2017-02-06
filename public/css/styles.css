@@ -931,3 +931,7 @@ h1.page-header {
 	width: 20px;
 	height: 20px;
 }
+
+#github_results_table tr:not(.no-records-found){
+	cursor: pointer;
+}
