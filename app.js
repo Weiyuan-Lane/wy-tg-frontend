@@ -4,7 +4,7 @@
  * in the same directory, and are as follows:
  *
  * - Provide a search interface that accepts keywords, and then displaying the
- *   owner and repository names of the results retrieved via the keywords
+ *   owner and repository names of the results retrieved
  * - Upon clicking on a single row of the repository search results, additional
  *   information on the repository - Url, followers, description and language
  *   will be displayed
