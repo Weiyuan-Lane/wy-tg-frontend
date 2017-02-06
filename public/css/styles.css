@@ -935,3 +935,31 @@ h1.page-header {
 #github_results_table tr:not(.no-records-found){
 	cursor: pointer;
 }
+
+.align-right{
+	text-align: right;
+}
+
+.align-top {
+	vertical-align: top;
+}
+
+.no-margin {
+	margin: 0;
+}
+
+table.moderate-spacing {
+	border-collapse:separate;
+	border-spacing:1.2em;
+	table-layout:fixed;
+	width: 100%;
+}
+
+td.table-caption-width {
+	width:20%;
+	min-width:100px;
+}
+
+a.no-text-decoration:hover{
+    text-decoration: none;
+}

@@ -1,6 +1,7 @@
 $(document).ready(function(){
   var githubResultsTable = $('#github_results_table'),
-      loadingModal = $('#loading_modal');
+      loadingModal = $('#loading_modal'),
+      githubInfoModal = $('#github_info_modal');
 
   function showLoading(){
     loadingModal.modal({'backdrop': 'static', 'keyboard': false});
@@ -10,7 +11,37 @@ $(document).ready(function(){
     loadingModal.modal('hide');
   }
 
-  function showGithubInfoModal(){
+  function createHtmlPrimaryLabelText(text, link){
+    return "<a href='"+link+"' target='_blank' class='no-text-decoration'>\
+              <span class='label label-primary'>"+text+"</span>\
+            </a>";
+  }
+
+  function createFollowersLabels(followers){
+    var labels = [], labelsDom;
+    for (var i = 0; i < followers.length; i++){
+      labels.push(createHtmlPrimaryLabelText(followers[i].login, followers[i].html_url));
+    }
+    labelsDom = labels.join(' ');
+    return labelsDom;
+  }
+
+  function showGithubInfoModal(githubInfo){
+    showLoading();
+    $.ajax({
+      type: "GET",
+      url: githubInfo.subscribers_url,
+      success: function(response){
+        console.log(response);
+        $('#github_info_modal_description').html(githubInfo.description || '-');
+        $('#github_info_modal_language').html(githubInfo.language || '-');
+        $('#github_info_modal_url').attr('href', githubInfo.html_url);
+        $('#github_info_modal_url').html(githubInfo.html_url);
+        $('#github_info_modal_followers').html(createFollowersLabels(response));
+        hideLoading();
+        githubInfoModal.modal('show');
+      }
+    });
   }
 
   function searchGithub(str, pageNum, itemsPerPage, successCallback, failureCallback){
@@ -47,9 +78,7 @@ $(document).ready(function(){
 
   function init(){
     githubResultsTable.bootstrapTable({
-      onClickRow: function (row, $element, field) {
-        console.log(row);
-      },
+      onClickRow: showGithubInfoModal,
       ajax: tableSearch,
       toggle: "table",
       sidePagination: "server",

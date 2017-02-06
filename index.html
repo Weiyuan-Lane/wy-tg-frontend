@@ -33,7 +33,8 @@
 								<thead>
 									<tr>
 		                <th data-field="id">Id</th>
-		                <th data-field="name">Name</th>
+		                <th data-field="name">Repository</th>
+		                <th data-field="owner.login">Owner</th>
 			            </tr>
 								</thead>
 						</table>
@@ -43,7 +44,7 @@
 		</div><!--/.row-->
 	</div><!--/.main-->
 
-	<div class="modal fade" id="basicModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+	<div class="modal fade" id="github_info_modal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
@@ -55,7 +56,32 @@
           <h4 class="modal-title" id="myModalLabel">Modal title</h4>
         </div>
         <div class="modal-body">
-          <h3>Modal Body</h3>
+					<table class="moderate-spacing fixed width">
+						<tr>
+							<td class="align-right align-top table-caption-width"><h4 class="no-margin">Url</h4></td>
+							<td>
+								<a id="github_info_modal_url" href="" target="_blank"></a>
+							</td>
+						</tr>
+						<tr>
+							<td class="align-right align-top table-caption-width"><h4 class="no-margin">Language</h4></td>
+							<td>
+								<span id="github_info_modal_language"></span>
+							</td>
+						</tr>
+						<tr>
+							<td class="align-right align-top table-caption-width"><h4 class="no-margin">Description</h4></td>
+							<td>
+								<span id="github_info_modal_description"></span>
+							</td>
+						</tr>
+						<tr>
+							<td class="align-right align-top table-caption-width"><h4 class="no-margin">Followers</h4></td>
+							<td>
+								<div id="github_info_modal_followers"></div>
+							</td>
+						</tr>
+					</table>
         </div>
   		</div>
 		</div>
