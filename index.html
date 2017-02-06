@@ -36,7 +36,7 @@
 			      </div>
 					</div>
 					<div class="panel-body">
-						<table data-toggle="table" data-url="tables/data1.json" data-pagination="true" data-sort-name="name" data-sort-order="desc">
+						<table id="github_results_table" data-toggle="table" data-pagination="true" data-card-view="true">
 						</table>
 					</div>
 				</div>
@@ -61,10 +61,22 @@
   		</div>
 		</div>
 	</div>
+
+	<div class="modal fade" id="loading_modal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title" id="myModalLabel">Loading... please wait</h4>
+        </div>
+        <div class="modal-body">
+          <div class="progress progress-striped active" style="margin-bottom:0;"><div class="progress-bar" style="width: 100%"></div></div>
+        </div>
+  		</div>
+		</div>
+	</div>
 	<script src="public/js/jquery-1.11.1.min.js"></script>
 	<script src="public/js/bootstrap-table.js"></script>
 	<script src="public/js/bootstrap.min.js"></script>
 	<script src="app.js"></script>
 </body>
-
 </html>
