@@ -26,15 +26,13 @@ $(document).ready(function(){
      */
     onClickRow: function(githubInfo){
       showLoading();
-      $.ajax({
-        type: "GET",
-        url: githubInfo.subscribers_url,
-        success: function(response){
-          showGithubRepositoryInfo(githubInfo.description, githubInfo.language,
-             githubInfo.html_url, response);
-          hideLoading();
-        },
-        error: notifyAjaxError
+      getSubscribers(githubInfo.subscribers_url, function(response){
+        showGithubRepositoryInfo(githubInfo.description, githubInfo.language,
+           githubInfo.html_url, response);
+        hideLoading();
+      }, function(jqXHR, textStatus, errorThrown){
+        notifyAjaxError(jqXHR, textStatus, errorThrown);
+        hideLoading();
       });
     },
     /* Event is triggered whenever an ajax call is desired by bootstrap-table
@@ -49,6 +47,7 @@ $(document).ready(function(){
       //Search only when keyword is not null or empty
       if (typeof(data.search) === 'string' && data.search !== '' ){
         var pageNum = Math.floor(data.offset / data.limit) + 1;
+
         searchGithubRepo(data.search, pageNum, data.limit, function(total, rows){
           params.success({total: total, rows: rows});
         }, function (jqXHR, textStatus, errorThrown){
@@ -92,6 +91,21 @@ $(document).ready(function(){
           successCallback(totalCount, response.items);
         }
       },
+      error: failureCallback
+    });
+  }
+
+  /* Function to retrieve a repository follower data, given the subscribers link
+   *
+   * @param subscribersUrl The url to retrieve the followers information
+   * @param successCallback Callback if request is successfully executed
+   * @param failureCallback Callback if request fails to execute
+   */
+  function getSubscribers(subscribersUrl, successCallback, failureCallback){
+    $.ajax({
+      type: "GET",
+      url: subscribersUrl,
+      success: successCallback,
       error: failureCallback
     });
   }
